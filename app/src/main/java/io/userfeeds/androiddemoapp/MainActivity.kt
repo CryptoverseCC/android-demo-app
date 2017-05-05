@@ -10,6 +10,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
     }
 
-    fun untested() {
-    }
+    fun random() = 4
 }
