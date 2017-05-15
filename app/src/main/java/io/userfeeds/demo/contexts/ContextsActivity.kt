@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.userfeeds.demo.R
 import kotlinx.android.synthetic.main.main_activity.*
 
 class ContextsActivity : AppCompatActivity() {
