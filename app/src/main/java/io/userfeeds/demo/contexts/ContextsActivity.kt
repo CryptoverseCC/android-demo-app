@@ -6,13 +6,15 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.userfeeds.demo.R
-import kotlinx.android.synthetic.main.main_activity.*
+import io.userfeeds.demo.ranking.RankingsActivity
+import kotlinx.android.synthetic.main.contexts_activity.*
 
 class ContextsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        setContentView(R.layout.contexts_activity)
+        setSupportActionBar(toolbar)
         ContextsApiProvider.get()
                 .call()
                 .map(this::toContextList)
@@ -35,6 +37,7 @@ class ContextsActivity : AppCompatActivity() {
     private fun onContexts(contexts: List<ShareContext>) {
         contextList.layoutManager = LinearLayoutManager(this)
         contextList.adapter = ContextListAdapter(contexts) {
+            RankingsActivity.start(this)
         }
     }
 
