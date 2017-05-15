@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.MenuItem
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.userfeeds.demo.R
 import io.userfeeds.demo.contexts.ShareContext
@@ -29,6 +30,7 @@ class RankingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.rankings_activity)
         setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         AlgorithmsApiProvider.get()
                 .call(shareContext.id)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -42,5 +44,15 @@ class RankingsActivity : AppCompatActivity() {
 
     private fun onError(error: Throwable) {
         Log.e("ContextsActivity", "error", error)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
