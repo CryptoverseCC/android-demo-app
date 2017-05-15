@@ -1,4 +1,4 @@
-package io.userfeeds.demo
+package io.userfeeds.demo.contexts
 
 import io.userfeeds.infrastructure.retrofit.ApiProvider
 

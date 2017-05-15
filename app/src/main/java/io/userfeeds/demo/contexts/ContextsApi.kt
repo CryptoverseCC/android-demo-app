@@ -1,4 +1,4 @@
-package io.userfeeds.demo
+package io.userfeeds.demo.contexts
 
 import io.reactivex.Single
 import retrofit2.http.GET

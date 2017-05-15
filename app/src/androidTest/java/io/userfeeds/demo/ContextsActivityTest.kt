@@ -1,6 +1,7 @@
 package io.userfeeds.demo
 
 import android.support.test.rule.ActivityTestRule
+import io.userfeeds.demo.contexts.ContextsActivity
 import org.junit.Rule
 import org.junit.Test
 

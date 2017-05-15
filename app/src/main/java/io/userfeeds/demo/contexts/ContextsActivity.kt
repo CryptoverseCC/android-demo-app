@@ -1,4 +1,4 @@
-package io.userfeeds.demo
+package io.userfeeds.demo.contexts
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

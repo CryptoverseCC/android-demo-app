@@ -1,4 +1,4 @@
-package io.userfeeds.demo
+package io.userfeeds.demo.contexts
 
 import android.os.Parcel
 import android.os.Parcelable
