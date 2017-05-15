@@ -37,7 +37,7 @@ class ContextsActivity : AppCompatActivity() {
     private fun onContexts(contexts: List<ShareContext>) {
         contextList.layoutManager = LinearLayoutManager(this)
         contextList.adapter = ContextListAdapter(contexts) {
-            RankingsActivity.start(this)
+            RankingsActivity.start(this, it)
         }
     }
 
