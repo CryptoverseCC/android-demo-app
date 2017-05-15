@@ -19,6 +19,9 @@ android {
             testCoverageEnabled true
         }
     }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
 }
 
 dependencies {
