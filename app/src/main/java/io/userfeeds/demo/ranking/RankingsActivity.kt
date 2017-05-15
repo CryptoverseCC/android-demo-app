@@ -36,7 +36,8 @@ class RankingsActivity : AppCompatActivity() {
     }
 
     private fun onAlgorithms(algorithms: AlgorithmsResponse) {
-        algorithms.items.map { tabLayout.newTab().setText(it.description) }.forEach(tabLayout::addTab)
+        rankingsPager.adapter = RankingsPagerAdapter(supportFragmentManager, shareContext, algorithms.items)
+        tabLayout.setupWithViewPager(rankingsPager)
     }
 
     private fun onError(error: Throwable) {
