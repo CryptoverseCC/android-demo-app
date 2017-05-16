@@ -11,6 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.userfeeds.demo.R
 import io.userfeeds.demo.contexts.ShareContext
 import kotlinx.android.synthetic.main.ranking_fragment.*
+import pl.mg6.rxjava2.disposeondestroy.disposeOnDestroyView
 
 class RankingFragment : Fragment() {
 
@@ -40,6 +41,7 @@ class RankingFragment : Fragment() {
         RankingApiProvider.get()
                 .call(shareContext.id, algorithm.identifier)
                 .observeOn(AndroidSchedulers.mainThread())
+                .disposeOnDestroyView(this)
                 .subscribe(this::onRanking, this::onError)
     }
 
