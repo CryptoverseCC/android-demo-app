@@ -43,6 +43,7 @@ class RankingFragment : Fragment() {
                 .call(shareContext.id, algorithm.identifier)
                 .observeOn(AndroidSchedulers.mainThread())
                 .disposeOnDestroyView(this)
+                .doFinally { progressBar.visibility = View.GONE }
                 .subscribe(this::onRanking, this::onError)
     }
 
