@@ -1,5 +1,6 @@
 package io.userfeeds.demo.ranking
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -47,7 +48,16 @@ class RankingFragment : Fragment() {
 
     private fun onRanking(algorithms: RankingResponse) {
         rankingList.layoutManager = LinearLayoutManager(activity)
-        rankingList.adapter = RankingAdapter(algorithms.items)
+        rankingList.adapter = RankingAdapter(algorithms.items) { item, label ->
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_TEXT, item.value)
+            intent.putExtra("io.userfeeds.share.context.id", shareContext.id)
+            intent.putExtra("io.userfeeds.share.context.hashtag", shareContext.hashtag)
+            intent.putExtra("io.userfeeds.share.context.imageUrl", shareContext.imageUrl)
+            intent.putExtra("io.userfeeds.share.label", label)
+            activity.startActivity(intent)
+        }
     }
 
     private fun onError(error: Throwable) {

@@ -7,7 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import io.userfeeds.demo.R
 
-class RankingAdapter(private val rankingItems: List<RankingItem>) : RecyclerView.Adapter<RankingAdapter.Holder>() {
+class RankingAdapter(
+        private val rankingItems: List<RankingItem>,
+        private val onShare: (RankingItem, String) -> Unit)
+    :
+        RecyclerView.Adapter<RankingAdapter.Holder>() {
 
     override fun getItemCount() = rankingItems.size
 
@@ -21,6 +25,8 @@ class RankingAdapter(private val rankingItems: List<RankingItem>) : RecyclerView
         val item = rankingItems[position]
         val nameView = holder.itemView.findViewById(R.id.name) as TextView
         nameView.text = item.value
+        holder.itemView.findViewById(R.id.like).setOnClickListener { onShare(item, "positive") }
+        holder.itemView.findViewById(R.id.dislike).setOnClickListener { onShare(item, "negative") }
     }
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
