@@ -8,7 +8,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "io.userfeeds.androiddemoapp"
-        minSdkVersion 16
+        minSdkVersion 23
         targetSdkVersion 25
         versionCode 1000
         versionName "0.1.0"
@@ -22,9 +22,13 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
+    packagingOptions {
+        exclude 'META-INF/core_release.kotlin_module'
+    }
 }
 
 dependencies {
+    compile(name: 'core-release', ext: 'aar')
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "com.squareup.retrofit2:retrofit:$retrofit_version"
     compile "com.squareup.retrofit2:converter-moshi:$retrofit_version"

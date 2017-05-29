@@ -2,7 +2,8 @@ package io.userfeeds.demo.ranking
 
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import io.userfeeds.demo.contexts.ShareContext
+import io.userfeeds.sdk.core.algorithm.Algorithm
+import io.userfeeds.sdk.core.context.ShareContext
 
 class RankingsPagerAdapter(fm: FragmentManager, val shareContext: ShareContext, val algorithms: List<Algorithm>) : FragmentPagerAdapter(fm) {
 

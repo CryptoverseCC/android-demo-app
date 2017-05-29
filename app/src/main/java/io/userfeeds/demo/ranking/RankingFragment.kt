@@ -10,7 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.userfeeds.demo.R
-import io.userfeeds.demo.contexts.ShareContext
+import io.userfeeds.sdk.core.algorithm.Algorithm
+import io.userfeeds.sdk.core.context.ShareContext
+import io.userfeeds.sdk.core.ranking.RankingItem
+import io.userfeeds.sdk.core.ranking.getRanking
 import kotlinx.android.synthetic.main.ranking_fragment.*
 import pl.mg6.rxjava2.disposeondestroy.disposeOnDestroyView
 
@@ -39,17 +42,16 @@ class RankingFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        RankingApiProvider.get()
-                .call(shareContext.id, algorithm.identifier)
+        getRanking(shareContext, algorithm)
                 .observeOn(AndroidSchedulers.mainThread())
                 .disposeOnDestroyView(this)
                 .doFinally { progressBar.visibility = View.GONE }
                 .subscribe(this::onRanking, this::onError)
     }
 
-    private fun onRanking(algorithms: RankingResponse) {
+    private fun onRanking(ranking: List<RankingItem>) {
         rankingList.layoutManager = LinearLayoutManager(activity)
-        rankingList.adapter = RankingAdapter(algorithms.items) { item, label ->
+        rankingList.adapter = RankingAdapter(ranking) { item, label ->
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
             intent.putExtra(Intent.EXTRA_TEXT, item.value)

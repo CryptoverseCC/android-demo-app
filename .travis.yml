@@ -17,6 +17,9 @@ env:
 before_script:
   - script/run_emulator
 
+script:
+  - ./gradlew test
+
 after_script:
   - adb logcat -d
   - cat app/build/reports/lint-results.xml

@@ -8,7 +8,9 @@ import android.util.Log
 import android.view.MenuItem
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.userfeeds.demo.R
-import io.userfeeds.demo.contexts.ShareContext
+import io.userfeeds.sdk.core.algorithm.Algorithm
+import io.userfeeds.sdk.core.algorithm.getAlgorithms
+import io.userfeeds.sdk.core.context.ShareContext
 import kotlinx.android.synthetic.main.rankings_activity.*
 
 class RankingsActivity : AppCompatActivity() {
@@ -31,19 +33,18 @@ class RankingsActivity : AppCompatActivity() {
         setContentView(R.layout.rankings_activity)
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        AlgorithmsApiProvider.get()
-                .call(shareContext.id)
+        getAlgorithms(shareContext)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onAlgorithms, this::onError)
     }
 
-    private fun onAlgorithms(algorithms: AlgorithmsResponse) {
-        rankingsPager.adapter = RankingsPagerAdapter(supportFragmentManager, shareContext, algorithms.items)
+    private fun onAlgorithms(algorithms: List<Algorithm>) {
+        rankingsPager.adapter = RankingsPagerAdapter(supportFragmentManager, shareContext, algorithms)
         tabLayout.setupWithViewPager(rankingsPager)
     }
 
     private fun onError(error: Throwable) {
-        Log.e("ContextsActivity", "error", error)
+        Log.e("RankingsActivity", "error", error)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

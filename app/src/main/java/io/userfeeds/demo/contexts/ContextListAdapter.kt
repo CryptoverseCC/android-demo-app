@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import io.userfeeds.demo.R
+import io.userfeeds.sdk.core.context.ShareContext
 
 class ContextListAdapter(private val contexts: List<ShareContext>, private val onContextSelect: (ShareContext) -> Unit) : RecyclerView.Adapter<ContextListAdapter.Holder>() {
 

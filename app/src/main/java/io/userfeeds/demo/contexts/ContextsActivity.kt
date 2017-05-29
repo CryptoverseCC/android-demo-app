@@ -7,6 +7,8 @@ import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.userfeeds.demo.R
 import io.userfeeds.demo.ranking.RankingsActivity
+import io.userfeeds.sdk.core.context.ShareContext
+import io.userfeeds.sdk.core.context.getContexts
 import kotlinx.android.synthetic.main.contexts_activity.*
 
 class ContextsActivity : AppCompatActivity() {
@@ -15,23 +17,9 @@ class ContextsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.contexts_activity)
         setSupportActionBar(toolbar)
-        ContextsApiProvider.get()
-                .call()
-                .map(this::toContextList)
+        getContexts()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onContexts, this::onError)
-    }
-
-    private fun toContextList(contexts: Map<String, ContextFromApi>): List<ShareContext> {
-        return contexts.map { (id, context) -> toContext(id, context) }
-    }
-
-    private fun toContext(id: String, context: ContextFromApi): ShareContext {
-        return ShareContext(
-                id = id,
-                hashtag = context.hashtag,
-                imageUrl = "https://beta.userfeeds.io/api/contexts${context.images.avatar}"
-        )
     }
 
     private fun onContexts(contexts: List<ShareContext>) {

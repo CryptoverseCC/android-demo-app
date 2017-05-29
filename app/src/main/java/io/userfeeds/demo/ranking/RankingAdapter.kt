@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import io.userfeeds.demo.R
+import io.userfeeds.sdk.core.ranking.RankingItem
 
 class RankingAdapter(
         private val rankingItems: List<RankingItem>,
