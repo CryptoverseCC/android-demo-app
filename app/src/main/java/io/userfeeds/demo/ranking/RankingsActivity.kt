@@ -8,8 +8,8 @@ import android.util.Log
 import android.view.MenuItem
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.userfeeds.demo.R
+import io.userfeeds.sdk.core.UserfeedsService
 import io.userfeeds.sdk.core.algorithm.Algorithm
-import io.userfeeds.sdk.core.algorithm.getAlgorithms
 import io.userfeeds.sdk.core.context.ShareContext
 import kotlinx.android.synthetic.main.rankings_activity.*
 
@@ -33,7 +33,7 @@ class RankingsActivity : AppCompatActivity() {
         setContentView(R.layout.rankings_activity)
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        getAlgorithms(shareContext)
+        UserfeedsService.get().getAlgorithms(shareContext)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onAlgorithms, this::onError)
     }

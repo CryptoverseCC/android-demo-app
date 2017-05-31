@@ -7,8 +7,8 @@ import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.userfeeds.demo.R
 import io.userfeeds.demo.ranking.RankingsActivity
+import io.userfeeds.sdk.core.UserfeedsService
 import io.userfeeds.sdk.core.context.ShareContext
-import io.userfeeds.sdk.core.context.getContexts
 import kotlinx.android.synthetic.main.contexts_activity.*
 
 class ContextsActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class ContextsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.contexts_activity)
         setSupportActionBar(toolbar)
-        getContexts()
+        UserfeedsService.get().getContexts()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onContexts, this::onError)
     }
