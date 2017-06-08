@@ -54,7 +54,7 @@ class RankingFragment : Fragment() {
         rankingList.adapter = RankingAdapter(ranking) { item, label ->
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
-            intent.putExtra(Intent.EXTRA_TEXT, item.value)
+            intent.putExtra(Intent.EXTRA_TEXT, item.target)
             intent.putExtra("io.userfeeds.share.context.id", shareContext.id)
             intent.putExtra("io.userfeeds.share.context.hashtag", shareContext.hashtag)
             intent.putExtra("io.userfeeds.share.context.imageUrl", shareContext.imageUrl)

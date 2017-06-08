@@ -25,7 +25,7 @@ class RankingAdapter(
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val item = rankingItems[position]
         val nameView = holder.itemView.findViewById(R.id.name) as TextView
-        nameView.text = item.value
+        nameView.text = item.target
         holder.itemView.findViewById(R.id.like).setOnClickListener { onShare(item, "positive") }
         holder.itemView.findViewById(R.id.dislike).setOnClickListener { onShare(item, "negative") }
     }
