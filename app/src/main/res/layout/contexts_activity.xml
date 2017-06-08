@@ -17,10 +17,27 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/contextList"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/contextList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <io.userfeeds.ads.sdk.AdView
+            xmlns:userfeeds="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            userfeeds:algorithm="internal"
+            userfeeds:apiKey="59049c8fdfed920001508e2a94bad07aa8f846674ae92e8765bd926c"
+            userfeeds:context="ads"
+            userfeeds:debug="true"/>
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
