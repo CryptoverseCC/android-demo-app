@@ -28,7 +28,7 @@ android {
 }
 
 dependencies {
-    compile 'io.userfeeds.sdk:core:0.0.6'
+    compile 'io.userfeeds.sdk:core:0.0.4'
     compile 'io.userfeeds.ads.sdk:core:0.0.5'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
