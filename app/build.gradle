@@ -23,13 +23,14 @@ android {
         disable 'InvalidPackage'
     }
     packagingOptions {
-        exclude 'META-INF/core_release.kotlin_module'
+        exclude 'META-INF/*'
     }
 }
 
 dependencies {
-    compile 'io.userfeeds.sdk:core:0.0.4'
-    compile 'io.userfeeds.ads.sdk:core:0.0.5'
+    compile 'io.userfeeds.sdk:core:0.0.7'
+    compile 'io.userfeeds.ads.sdk:core:0.0.7'
+    compile 'io.userfeeds.ads.sdk:analytics-firebase:0.0.7'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
@@ -42,3 +43,5 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 }
+
+apply plugin: 'com.google.gms.google-services'
