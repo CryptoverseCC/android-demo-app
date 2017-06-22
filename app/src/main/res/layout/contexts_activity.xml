@@ -29,14 +29,13 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
 
-        <io.userfeeds.ads.sdk.AdView
+        <io.userfeeds.widget.LinksViewPager
             xmlns:userfeeds="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            userfeeds:algorithm="internal"
-            userfeeds:apiKey="59049c8fdfed920001508e2a94bad07aa8f846674ae92e8765bd926c"
-            userfeeds:context="ads"
+            userfeeds:algorithm="ads"
+            userfeeds:context="rinkeby:0x0406735fc1a657398941a50a0602eddf9723a6c8"
             userfeeds:debug="true"/>
 
     </LinearLayout>

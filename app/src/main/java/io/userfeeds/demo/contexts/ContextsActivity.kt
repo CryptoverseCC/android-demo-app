@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.userfeeds.ads.sdk.analytics.firebase.FirebaseAnalyticsEventLogger
+import io.userfeeds.widget.analytics.firebase.FirebaseAnalyticsEventLogger
 import io.userfeeds.demo.R
 import io.userfeeds.demo.ranking.RankingsActivity
 import io.userfeeds.sdk.core.UserfeedsService

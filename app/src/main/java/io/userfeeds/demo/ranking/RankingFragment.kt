@@ -42,7 +42,7 @@ class RankingFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        UserfeedsService.get().getRanking(shareContext, algorithm)
+        UserfeedsService.get().getRanking(shareContext, algorithm, null)
                 .observeOn(AndroidSchedulers.mainThread())
                 .disposeOnDestroyView(this)
                 .doFinally { progressBar.visibility = View.GONE }
